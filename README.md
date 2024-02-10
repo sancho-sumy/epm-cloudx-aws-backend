@@ -13,7 +13,6 @@ Additional scope;
 * added unit tests
 * added prettier
 * added eslint
-* unit tests
 * swagger
   https://nmv70szrl7.execute-api.eu-central-1.amazonaws.com/swagger
 
