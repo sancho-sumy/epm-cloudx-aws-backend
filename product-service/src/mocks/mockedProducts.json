@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1111",
+    "title": "Test product 1",
+    "description": "Test description",
+    "price": 100,
+    "stock": 10,
+    "image": "https://fake.com/image.jpg"
+  },
+  {
+    "id": "2222",
+    "title": "Test product 2",
+    "description": "Test description",
+    "price": 200,
+    "stock": 20,
+    "image": "https://fake.com/image.jpg"
+  }
+]
