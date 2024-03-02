@@ -15,7 +15,7 @@
     "outDir": "lib",
     "allowJs": true
   },
-  "include": ["src/**/*.ts", "serverless.ts"],
+  "include": ["src/**/*.ts", "serverless.ts", "src/helpers/fillDbFromJson.ts"],
   "exclude": [
     "node_modules/**/*",
     ".serverless/**/*",

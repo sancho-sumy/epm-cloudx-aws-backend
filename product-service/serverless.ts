@@ -2,28 +2,58 @@ import type { AWS } from '@serverless/typescript';
 
 import { getProductsById, getProductsList } from '@functions/index';
 
+import dynamoDbTables from '@resources/dynamodb-tables';
+
 const serverlessConfiguration: AWS = {
 	service: 'product-service',
 	frameworkVersion: '3',
-	plugins: ['serverless-offline', 'serverless-auto-swagger', 'serverless-esbuild'],
+	useDotenv: true,
+	plugins: ['serverless-offline', 'serverless-esbuild', 'serverless-auto-swagger'],
 	provider: {
 		name: 'aws',
-		runtime: 'nodejs14.x',
+		runtime: 'nodejs20.x',
 		region: 'eu-central-1',
+		stage: 'dev',
 		apiGateway: {
 			minimumCompressionSize: 1024,
 			shouldStartNameWithService: true
 		},
 		environment: {
 			AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
-			NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000'
+			NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
+			PRODUCTS_TABLE: '${env:PRODUCTS_TABLE_NAME}',
+			STOCKS_TABLE: '${env:STOCKS_TABLE_NAME}'
 		},
 		httpApi: {
 			cors: true
+		},
+		iam: {
+			role: {
+				name: 'DynamoDB_Access_Role',
+				statements: [
+					{
+						Action: [
+							'dynamodb:PutItem',
+							'dynamodb:GetItem',
+							'dynamodb:DeleteItem',
+							'dynamodb:Scan'
+						],
+						Effect: 'Allow',
+						Resource: [
+							{ 'Fn::GetAtt': ['ProductsTable', 'Arn'] },
+							{ 'Fn::GetAtt': ['StocksTable', 'Arn'] }
+						]
+					}
+				]
+			}
 		}
 	},
-	// import the function via paths
 	functions: { getProductsList, getProductsById },
+	resources: {
+		Resources: {
+			...dynamoDbTables
+		}
+	},
 	package: { individually: true },
 	custom: {
 		esbuild: {
@@ -37,8 +67,8 @@ const serverlessConfiguration: AWS = {
 			concurrency: 10
 		},
 		autoswagger: {
-			description: 'Backend for EPAM CloudX AWS course',
 			title: 'CloudX AWS backend',
+			description: 'Backend for EPAM CloudX AWS course',
 			typefiles: []
 		}
 	}

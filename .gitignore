@@ -13,3 +13,5 @@ jspm_packages
 coverage
 
 swagger
+
+.env
