@@ -1,19 +1,45 @@
-import { formatJSONResponse } from '@libs/api-gateway';
+import { ScanCommandInput } from '@aws-sdk/lib-dynamodb';
+import { formatJSONResponse } from '@libs/apiGateway';
 import { AppError } from '@libs/appError';
 import { middyfy } from '@libs/lambda';
-import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from 'aws-lambda';
-import mockedProducts from '../../mocks/products.json';
+import { Product, Stock } from '@models/index';
+import { scan } from '@services/database.service';
+import { APIGatewayProxyResultV2 } from 'aws-lambda';
+import 'dotenv/config';
 
-const getProductsList = async (
-	_event: APIGatewayProxyEventV2
-): Promise<APIGatewayProxyResultV2> => {
-	if (mockedProducts.length === 0) {
+const getProductsList = async (): Promise<APIGatewayProxyResultV2> => {
+	const paramsProducts: ScanCommandInput = {
+		TableName: process.env.PRODUCTS_TABLE
+	};
+	const paramsStocks: ScanCommandInput = {
+		TableName: process.env.STOCKS_TABLE
+	};
+
+	const responseProducts = await scan(paramsProducts);
+	const responseStocks = await scan(paramsStocks);
+
+	console.log(responseProducts);
+	console.log(responseStocks);
+
+	const productsList = responseProducts.Items.map((product: Product) => {
+		const { count } = (responseStocks.Items as Stock[]).find(
+			(stock: Stock) => stock.product_id === product.id
+		) ?? { count: 0 };
+
+		return {
+			...product,
+			count
+		};
+	});
+
+	if (productsList.length === 0) {
 		throw new AppError(`There is no products`, 404);
 	}
+	console.log(productsList);
 
 	return formatJSONResponse(
 		{
-			products: mockedProducts
+			products: productsList
 		},
 		200
 	);
