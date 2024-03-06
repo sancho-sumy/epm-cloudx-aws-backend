@@ -1,8 +1,8 @@
 import type { AWS } from '@serverless/typescript';
 
-import { getProductsById, getProductsList } from '@functions/index';
+import { createProduct, getProductsById, getProductsList } from '@functions/index';
 
-import dynamoDbTables from '@resources/dynamodb-tables';
+import dynamoDbTables from '@resources/dynamodbTables';
 
 const serverlessConfiguration: AWS = {
 	service: 'product-service',
@@ -21,8 +21,8 @@ const serverlessConfiguration: AWS = {
 		environment: {
 			AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
 			NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
-			PRODUCTS_TABLE: '${env:PRODUCTS_TABLE_NAME}',
-			STOCKS_TABLE: '${env:STOCKS_TABLE_NAME}'
+			PRODUCTS_TABLE: '${env:PRODUCTS_TABLE}',
+			STOCKS_TABLE: '${env:STOCKS_TABLE}'
 		},
 		httpApi: {
 			cors: true
@@ -36,7 +36,9 @@ const serverlessConfiguration: AWS = {
 							'dynamodb:PutItem',
 							'dynamodb:GetItem',
 							'dynamodb:DeleteItem',
-							'dynamodb:Scan'
+							'dynamodb:Scan',
+							'dynamodb:TransactWriteItems',
+							'dynamodb:BatchGetItem'
 						],
 						Effect: 'Allow',
 						Resource: [
@@ -48,7 +50,7 @@ const serverlessConfiguration: AWS = {
 			}
 		}
 	},
-	functions: { getProductsList, getProductsById },
+	functions: { getProductsList, getProductsById, createProduct },
 	resources: {
 		Resources: {
 			...dynamoDbTables
@@ -69,7 +71,7 @@ const serverlessConfiguration: AWS = {
 		autoswagger: {
 			title: 'CloudX AWS backend',
 			description: 'Backend for EPAM CloudX AWS course',
-			typefiles: []
+			typefiles: ['./src/types/apiTypes.d.ts']
 		}
 	}
 };

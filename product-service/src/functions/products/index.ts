@@ -1,4 +1,4 @@
-import { handlerPath } from '@libs/handler-resolver';
+import { handlerPath } from '@libs/handlerResolver';
 
 export const getProductsList = {
 	handler: `${handlerPath(__dirname)}/getProductsList.main`,
@@ -25,6 +25,22 @@ export const getProductsById = {
 				summary: 'Product by ID',
 				description: 'Return a product by ID',
 				swaggerTags: ['Products']
+			}
+		}
+	]
+};
+
+export const createProduct = {
+	handler: `${handlerPath(__dirname)}/createProduct.main`,
+	events: [
+		{
+			httpApi: {
+				method: 'post',
+				path: '/products',
+				summary: 'Create product',
+				description: 'Create new product and return it',
+				swaggerTags: ['Products'],
+				bodyType: 'CreateProductBodyType'
 			}
 		}
 	]
