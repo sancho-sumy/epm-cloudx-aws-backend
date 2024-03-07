@@ -27,6 +27,8 @@ const getProductsById = async (event: APIGatewayProxyEventV2): Promise<APIGatewa
 
 	const responseRaw = await batchGet(params);
 
+	console.log('test', responseRaw);
+
 	const { products, stocks } = responseRaw.Responses as unknown as GetProductByIdResponse;
 
 	if (products.length < 1) {

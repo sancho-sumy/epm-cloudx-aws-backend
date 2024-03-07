@@ -1,10 +1,8 @@
 import { PutCommandInput } from '@aws-sdk/lib-dynamodb';
+import { create } from '@services/database.service';
 import fs from 'fs';
 import { Product } from 'src/models/product.model';
-import DatabaseService from 'src/services/database.service';
 import { v4 as uuidv4 } from 'uuid';
-
-const databaseService = new DatabaseService();
 
 console.log('Importing Sample products into DynamoDB. Please wait...');
 
@@ -32,8 +30,8 @@ importData.forEach(async (product: Product) => {
 	};
 
 	try {
-		await databaseService.create(paramsProducts);
-		await databaseService.create(paramsStocks);
+		await create(paramsProducts);
+		await create(paramsStocks);
 
 		console.log(`Put product succeeded: ${product.title}`);
 	} catch (error) {

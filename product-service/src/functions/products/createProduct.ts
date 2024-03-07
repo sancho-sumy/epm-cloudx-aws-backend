@@ -1,12 +1,13 @@
 import { TransactWriteCommandInput } from '@aws-sdk/lib-dynamodb';
 import { ResponseMessage } from '@enums/responseMessages.enum';
+import { StatusCode } from '@enums/statusCode.enums';
 import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/apiGateway';
 import { formatJSONResponse } from '@libs/apiGateway';
 import { middyfy } from '@libs/lambda';
+import { createProductSchema } from '@schemas/index';
 import { transactWrite } from '@services/database.service';
 import 'dotenv/config';
 import { buildYup } from 'schema-to-yup';
-import { createProductSchema } from 'src/schemas/index';
 import { v4 as uuidv4 } from 'uuid';
 
 const yupSchema = buildYup(createProductSchema);
@@ -47,7 +48,7 @@ const createProduct: ValidatedEventAPIGatewayProxyEvent<typeof createProductSche
 			message: ResponseMessage.CREATE_PRODUCT_SUCCESS,
 			product: { ...product, count }
 		},
-		200
+		StatusCode.OK
 	);
 };
 

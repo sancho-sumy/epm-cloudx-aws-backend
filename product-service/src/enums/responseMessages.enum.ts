@@ -1,6 +1,7 @@
 export enum ResponseMessage {
 	CREATE_PRODUCT_SUCCESS = 'Product successfully created!',
 	CREATE_PRODUCT_FAIL = 'Product cannot be created!',
+	GET_PRODUCTS_FAIL = 'There is no products!',
 	GET_PRODUCT_SUCCESS = 'Product successfully retrieved!',
 	GET_PRODUCT_FAIL = 'Product not found!',
 	ERROR = 'Unknown error.',

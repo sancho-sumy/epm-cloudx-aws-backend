@@ -1,4 +1,6 @@
 import { ScanCommandInput } from '@aws-sdk/lib-dynamodb';
+import { ResponseMessage } from '@enums/responseMessages.enum';
+import { StatusCode } from '@enums/statusCode.enums';
 import { formatJSONResponse } from '@libs/apiGateway';
 import { AppError } from '@libs/appError';
 import { middyfy } from '@libs/lambda';
@@ -18,9 +20,6 @@ const getProductsList = async (): Promise<APIGatewayProxyResultV2> => {
 	const responseProducts = await scan(paramsProducts);
 	const responseStocks = await scan(paramsStocks);
 
-	console.log(responseProducts);
-	console.log(responseStocks);
-
 	const productsList = responseProducts.Items.map((product: Product) => {
 		const { count } = (responseStocks.Items as Stock[]).find(
 			(stock: Stock) => stock.product_id === product.id
@@ -33,9 +32,8 @@ const getProductsList = async (): Promise<APIGatewayProxyResultV2> => {
 	});
 
 	if (productsList.length === 0) {
-		throw new AppError(`There is no products`, 404);
+		throw new AppError(ResponseMessage.GET_PRODUCTS_FAIL, StatusCode.NOT_FOUND);
 	}
-	console.log(productsList);
 
 	return formatJSONResponse(
 		{
