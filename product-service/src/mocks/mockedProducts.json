@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1111",
+    "title": "Test product 1",
+    "description": "Test description",
+    "price": 100
+  },
+  {
+    "id": "2222",
+    "title": "Test product 2",
+    "description": "Test description",
+    "price": 200
+  }
+]

@@ -1,0 +1,106 @@
+[
+  {
+    "id": "f5c68ef6-700b-47d8-af88-9baf53ef3159",
+    "title": "iPhone 9",
+    "description": "An apple mobile which is nothing like apple",
+    "price": 549,
+    "stock": 94,
+    "image": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
+  },
+  {
+    "id": "2a0c7e47-3a9f-45a8-9a4b-99a4b31483cc",
+    "title": "iPhone X",
+    "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+    "price": 899,
+    "stock": 34,
+    "image": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+  },
+  {
+    "id": "a71df40a-16e5-4e65-99a2-ef836d9a349f",
+    "title": "Samsung Universe 9",
+    "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+    "price": 1249,
+    "stock": 36,
+    "image": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg"
+  },
+  {
+    "id": "b7a9ff85-8b4c-4c52-a3a0-74e354b2d75a",
+    "title": "OPPOF19",
+    "description": "OPPO F19 is officially announced on April 2021.",
+    "price": 280,
+    "stock": 123,
+    "image": "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg"
+  },
+  {
+    "id": "3ea22594-87e5-4a5f-bab6-6933fb3878fe",
+    "title": "Huawei P30",
+    "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+    "price": 499,
+    "stock": 32,
+    "image": "https://cdn.dummyjson.com/product-images/5/thumbnail.jpg"
+  },
+  {
+    "id": "9d03a3c2-1b5b-47cd-8c92-cd16614f4d18",
+    "title": "MacBook Pro",
+    "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+    "price": 1749,
+    "stock": 83,
+    "image": "https://cdn.dummyjson.com/product-images/6/thumbnail.png"
+  },
+  {
+    "id": "61837c07-68d1-41a4-bf77-5ed7a6366ce2",
+    "title": "Samsung Galaxy Book",
+    "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+    "price": 1499,
+    "stock": 50,
+    "image": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+  },
+  {
+    "id": "97c8040d-104e-4b32-9b04-29e2a9a6b33f",
+    "title": "Microsoft Surface Laptop 4",
+    "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+    "price": 1499,
+    "stock": 68,
+    "image": "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg"
+  },
+  {
+    "id": "3f6f64c4-4229-43df-b3cf-634e8ecce994",
+    "title": "Infinix INBOOK",
+    "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+    "price": 1099,
+    "stock": 96,
+    "image": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+  },
+  {
+    "id": "6222f0f0-94b8-4bb1-9483-0fe3ea21427d",
+    "title": "HP Pavilion 15-DK1056WM",
+    "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
+    "price": 1099,
+    "stock": 89,
+    "image": "https://cdn.dummyjson.com/product-images/10/thumbnail.jpeg"
+  },
+  {
+    "id": "f1a0e6c5-8339-4a69-813d-cd141f83b090",
+    "title": "perfume Oil",
+    "description": "Mega Discount, Impression of Acqua Di Gio by GiorgioArmani concentrated attar perfume Oil",
+    "price": 13,
+    "stock": 65,
+    "image": "https://cdn.dummyjson.com/product-images/11/thumbnail.jpg"
+  },
+  {
+    "id": "06eb493c-8b50-44a5-b9e7-9c69f6f27d48",
+    "title": "Brown Perfume",
+    "description": "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
+    "price": 40,
+    "stock": 52,
+    "image": "https://cdn.dummyjson.com/product-images/12/thumbnail.jpg"
+  },
+  {
+    "id": "ded96458-7796-49fc-bb17-34f0209b8012",
+    "title": "Fog Scent Xpressio Perfume",
+    "description": "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
+    "price": 13,
+    "stock": 61,
+    "image": "https://cdn.dummyjson.com/product-images/13/thumbnail.webp"
+  }
+]
